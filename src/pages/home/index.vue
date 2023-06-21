@@ -4,7 +4,6 @@
 		<view>
 			<text class="title">{{title}}</text>
 		</view>
-		<hgr-tabbar :current-page="0"></hgr-tabbar>
 	</view>
 </template>
 
@@ -12,7 +11,7 @@
 	export default {
 		data() {
 			return {
-				title: '光蕊的工作室'
+				title: '功能待开发...'
 			}
 		},
 		onLoad() {

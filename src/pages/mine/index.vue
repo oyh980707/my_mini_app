@@ -4,8 +4,6 @@
 		<view>
 			<text class="title">{{title}}</text>
 		</view>
-		
-		<hgr-tabbar :current-page="2"></hgr-tabbar>
 	</view>
 </template> 
 
