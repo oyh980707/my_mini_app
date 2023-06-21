@@ -1,9 +1,10 @@
 <template>
 	<view class="content">
-		<image class="logo" src="/static/logo.png"></image>
+		<image class="logo" src="/static/home.png"></image>
 		<view>
 			<text class="title">{{title}}</text>
 		</view>
+		<hgr-tabbar :current-page="0"></hgr-tabbar>
 	</view>
 </template>
 
@@ -11,11 +12,20 @@
 	export default {
 		data() {
 			return {
-				title: 'Hello'
+				title: '光蕊的工作室'
 			}
 		},
 		onLoad() {
-
+			console.log('App onLoad')
+		},
+		onLaunch: function() {
+			console.log('App Launch')
+		},
+		onShow: function() {
+			console.log('App Show')
+		},
+		onHide: function() {
+			console.log('App Hide')
 		},
 		methods: {
 
