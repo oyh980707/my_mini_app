@@ -30,9 +30,9 @@
 	}
 
 	.logo {
-		height: 200rpx;
-		width: 200rpx;
-		margin: 200rpx auto 50rpx auto;
+		height: 400rpx;
+		width: 400rpx;
+		margin: 100rpx auto 50rpx auto;
 	}
 
 	.text-area {
