@@ -2,10 +2,10 @@
 	<view class="content">
 		<image class="logo" src="/static/home.png"></image>
 
-		<view class="title">{{title}}</view>
+		<view class="title" @click="reset">{{title}}</view>
 
 		<view>
-			<view class="wraper" @click="calculator">
+			<view class="wraper" @click="countdown">
 				<view class="column" :style="{transform: `translateY(${-lineHeight*index4}rpx)`}">
 					<view class="num" v-for="(item, index) in arr4" :key="index">{{ item }}</view>
 				</view>
@@ -14,7 +14,7 @@
 				</view>
 			</view>
 
-			<view class="wraper" @click="calculator">
+			<view class="wraper" @click="countdown">
 				<view class="column" :style="{transform: `translateY(${-lineHeight*index2}rpx)`}">
 					<view class="num" v-for="(item, index) in arr4" :key="index">{{ item }}</view>
 				</view>
@@ -57,59 +57,28 @@
 			console.log('App Hide')
 		},
 		methods: {
-			// 个人微信小程序无法获取用户手机号
-			// // 获取用户手机号
-			// getPhoneNumber(e) {
-
-			// 	console.log(e.detail.errMsg) // 判断用户是否允许获取手机号
-			// 	console.log(e.detail.iv) // 参数 iv
-			// 	console.log(e.detail.encryptedData) // 参数encryptedData
-			// 	if (e.detail.errMsg == "getPhoneNumber:ok") { // 用户允许或去手机号
-			// 		uni.request({
-			// 			url: "http://192.168.0.93:6042/login/miniProgramLogin",
-			// 			method: "POST",
-			// 			data: {
-			// 				data: {
-			// 					encryptedData: e.detail.encryptedData,
-			// 					iv: e.detail.iv,
-			// 					sessionKey: this.session_key,
-			// 					openId: this.openId,
-			// 				}
-			// 			},
-			// 			success: (res) => {
-			// 				if (res.data.errorinfo == null) {
-			// 					console.log(res.data) // 这个里面就有手机号了
-
-			// 				}
-			// 			}
-			// 		})
-			// 	}
-			// },
-			calculator() {
+			countdown() {
 				if (this.timer == null) {
-					this.start()
+					this.turnSecond(this.arr1.length)
 				} else {
-					this.reset()
+					this.pause()
 				}
 			},
-			start() {
-				if (this.timer == null) {
-					this.index1 = 0
-					this.index2 = 0
-					this.index3 = 0
-					this.index4 = 3
-					this.turnSecond(this.arr1.length)
+			pause() {
+				if (this.timer != null) {
+					clearInterval(this.timer)
+					this.timer = null
 				}
 			},
 			reset() {
 				if (this.timer != null) {
 					clearInterval(this.timer)
 					this.timer = null
-					this.index1 = 9
-					this.index2 = 5
-					this.index3 = 9
-					this.index4 = 2
 				}
+				this.index1 = 9
+				this.index2 = 5
+				this.index3 = 9
+				this.index4 = 2
 			},
 			turnSecond(length) {
 				this.timer = setInterval(() => {
@@ -122,7 +91,6 @@
 			},
 			turnOther(type, length) {
 				if (this[`index${type}`] === length - 1) {
-					console.log(type)
 					let next = type + 1
 					this.turnOther(next, this[`arr${next}`].length)
 					this[`index${type}`] = -1
@@ -145,11 +113,6 @@
 		height: 400rpx;
 		width: 400rpx;
 		margin: 100rpx auto 50rpx auto;
-	}
-
-	.text-area {
-		display: flex;
-		justify-content: center;
 	}
 
 	.title {
