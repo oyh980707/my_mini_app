@@ -20,8 +20,7 @@
 		"navigationBarTextStyle": "black",
 		"navigationBarTitleText": "光蕊的工作室",
 		"navigationBarBackgroundColor": "#E6E6FA",
-		"backgroundColor": "#E6E6FA",
-		"blurEffect": "extralight"
+		"backgroundColor": "#E6E6FA"
 	},
 	"tabBar": {
 	    "color": "#7A7E83",
